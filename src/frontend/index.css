@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Bricolage Grotesque - Display */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Cabinet Grotesk - Body */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Figtree - Utility */
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree[wght].woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* === Warm coral-orange creator palette === */
+    --background: 0.98 0.005 60;
+    --foreground: 0.15 0.02 30;
+
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.02 30;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.02 30;
+
+    /* Coral orange primary */
+    --primary: 0.62 0.22 38;
+    --primary-foreground: 1 0 0;
+
+    --secondary: 0.96 0.015 50;
+    --secondary-foreground: 0.25 0.03 35;
+
+    --muted: 0.95 0.01 55;
+    --muted-foreground: 0.5 0.03 35;
+
+    /* Warm amber accent */
+    --accent: 0.88 0.12 65;
+    --accent-foreground: 0.2 0.05 30;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.9 0.015 55;
+    --input: 0.92 0.01 55;
+    --ring: 0.62 0.22 38;
+
+    /* Brand colors */
+    --brand-coral: 0.62 0.22 38;
+    --brand-amber: 0.78 0.18 65;
+    --brand-peach: 0.93 0.07 55;
+    --brand-cream: 0.97 0.02 70;
+    --brand-deep: 0.22 0.06 30;
+
+    --chart-1: 0.62 0.22 38;
+    --chart-2: 0.78 0.18 65;
+    --chart-3: 0.55 0.15 200;
+    --chart-4: 0.72 0.14 140;
+    --chart-5: 0.65 0.2 310;
+
+    --sidebar: 0.98 0.005 60;
+    --sidebar-foreground: 0.15 0.02 30;
+    --sidebar-primary: 0.62 0.22 38;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.96 0.015 50;
+    --sidebar-accent-foreground: 0.25 0.03 35;
+    --sidebar-border: 0.9 0.015 55;
+    --sidebar-ring: 0.62 0.22 38;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+  .font-body {
+    font-family: "Cabinet Grotesk", sans-serif;
+  }
+  .font-utility {
+    font-family: "Figtree", sans-serif;
+  }
+}
+
+/* Hero gradient mesh */
+.hero-gradient {
+  background: 
+    radial-gradient(ellipse 80% 60% at 20% 40%, oklch(0.93 0.12 55 / 0.5), transparent),
+    radial-gradient(ellipse 60% 80% at 80% 20%, oklch(0.92 0.1 38 / 0.4), transparent),
+    radial-gradient(ellipse 70% 50% at 60% 80%, oklch(0.96 0.08 70 / 0.3), transparent),
+    oklch(0.98 0.005 60);
+}
+
+/* Card hover effect */
+.product-card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.product-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px oklch(0.62 0.22 38 / 0.15), 0 4px 12px oklch(0 0 0 / 0.08);
+}
+
+/* Grain overlay */
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+  border-radius: inherit;
+}
+
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, oklch(0.55 0.22 38), oklch(0.7 0.2 55), oklch(0.65 0.18 38));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.96 0.01 55);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.8 0.08 38);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.62 0.22 38);
+}
